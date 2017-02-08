@@ -5,6 +5,8 @@ var commonConfig = require('./webpack.common.js');
 var helpers = require('./helpers');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
+const API_URL = process.env.API_URL = 'http://example.com/'; //ES
+
 
 module.exports = webpackMerge(commonConfig, {
     devtool: 'source-map',
@@ -35,7 +37,8 @@ module.exports = webpackMerge(commonConfig, {
         new webpack.DefinePlugin({
             'process.env': {
                 'ENV': JSON.stringify(ENV)
-            }
+            },
+            'API_URL': JSON.stringify(API_URL)
         })
     ]
 });
